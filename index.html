@@ -7,8 +7,11 @@
     <!--
     -- Step: Configure dojo for asynchronous module loading
     -->
+    <link rel="stylesheet" href="https://js.arcgis.com/3.35/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.35/"></script>
+
     <script>
-        var dojoConfig = {};
+        var dojoConfig = {async:true};
     </script>
 
     <!--
@@ -19,14 +22,19 @@
     <!--
     -- Step: Reference the gettingstarted.css file
     -->
-
+    <link reL="stylesheet" href="css/gettingstarted.css">
 
     <script>
         /*
          *  Step: Require the esri/map module and the dojo/domReady! plugin
          */
-
-
+         require(["esri/map", "dojo/domReady!"],function(Map){
+             var map = new Map('divMap', {
+                 basemap: 'topo',
+                 center:[-122.45, 37.75],
+                 zoom: 12
+                })
+         })
     </script>
 </head>
 
@@ -34,7 +42,7 @@
 <!--
 -- Step: Create a <div> in which the Map will display
 -->
-Hello world!
+<div id="divMap"></div>
 
 </body>
 </html>
